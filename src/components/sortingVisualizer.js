@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Styled from "styled-components";
 import { fisherYates } from "./../util/fisherYates";
+import bubbleSort from "./../sorting/bubbleSort";
 const Container = Styled.div`
 display: flex;
 border: 1px solid black;
@@ -23,60 +24,53 @@ height: 50px;
 `;
 
 const Visualizer = () => {
-  const arr = fisherYates(100);
+  const arr = fisherYates(25);
 
   const [data, setData] = useState(arr);
 
   const execBubbleSort = () => {
     let animations = bubbleSort(data);
+    let columns = document.querySelectorAll(".column");
+
+    console.log(columns);
     debugger;
-    animations.forEach((animation, index) => {
+    for (let i = 0; i < animations.length; i++) {
+      let [first, second] = animations[i];
+      debugger;
       setTimeout(() => {
-        setData(animation);
-      }, 25 * index);
-    });
+        let height1 = columns[first].clientHeight;
+        let height2 = columns[second].clientHeight;
+        columns[first].style.height = `${height2}px`;
+        columns[second].style.height = `${height1}px`;
+      }, 250 * i);
+    }
   };
 
   const shuffleArray = () => {
-    setData(fisherYates(100));
+    setData(fisherYates(25));
   };
   return (
     <>
       <Container>
         {data.map((element, index) => {
-          return <Element height={element} key={index}></Element>;
+          return (
+            <div
+              style={{
+                height: `${element * 5}px`,
+                border: "1px solid black",
+                width: "10px",
+                margin: "1px",
+              }}
+              key={index}
+              className="column"
+            ></div>
+          );
         })}
       </Container>
       <Button onClick={() => execBubbleSort()}>Bubble Sort</Button>
       <Button onClick={() => shuffleArray()}>Shuffle</Button>
     </>
   );
-};
-
-const bubbleSort = (data, animation = []) => {
-  let arr = Array.from(data);
-  let sorted = false;
-  const swap = (i, j) => {
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  };
-  while (!sorted) {
-    sorted = true;
-    for (let i = 0; i < arr.length - 1; i++) {
-      for (let j = i + 1; j < arr.length; j++) {
-        if (arr[i] > arr[j]) {
-          sorted = false;
-          swap(i, j);
-          animation.push(Array.from(arr));
-        }
-      }
-    }
-  }
-  return animation;
-};
-
-const swap = (i, j, arr) => {
-  [arr[i], arr[j]] = [arr[j], arr[i]];
-  return arr;
 };
 
 export default Visualizer;
