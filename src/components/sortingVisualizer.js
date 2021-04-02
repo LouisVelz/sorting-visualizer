@@ -10,10 +10,11 @@ height: auto;
 `;
 const Element = Styled.div`
 width: 10px;
-height: ${(props) => props.height * 20}px;
+height: ${(props) => props.height * 5}px;
 border: 1px solid gray;
 margin: 1px;
 display: inline-block;
+background-color: ${(props) => (props.current ? "light-blue" : "light-gren")}
 `;
 
 const Button = Styled.button`
@@ -22,15 +23,22 @@ height: 50px;
 `;
 
 const Visualizer = () => {
-  const arr = fisherYates(10);
+  const arr = fisherYates(100);
 
   const [data, setData] = useState(arr);
+
   const execBubbleSort = () => {
-    bubbleSort(data, setData);
+    let animations = bubbleSort(data);
+    debugger;
+    animations.forEach((animation, index) => {
+      setTimeout(() => {
+        setData(animation);
+      }, 25 * index);
+    });
   };
 
   const shuffleArray = () => {
-    setData(fisherYates(10));
+    setData(fisherYates(100));
   };
   return (
     <>
@@ -45,27 +53,29 @@ const Visualizer = () => {
   );
 };
 
-const bubbleSort = (data, setData) => {
-  debugger;
+const bubbleSort = (data, animation = []) => {
   let arr = Array.from(data);
   let sorted = false;
   const swap = (i, j) => {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   };
   while (!sorted) {
-    setTimeout(() => {
-      sorted = true;
-      for (let i = 0; i < arr.length - 1; i++) {
-        for (let j = i + 1; j < arr.length; j++) {
-          if (arr[i] > arr[j]) {
-            sorted = false;
-            swap(i, j);
-            setData(arr);
-          }
+    sorted = true;
+    for (let i = 0; i < arr.length - 1; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] > arr[j]) {
+          sorted = false;
+          swap(i, j);
+          animation.push(Array.from(arr));
         }
       }
-    }, 500);
+    }
   }
+  return animation;
+};
+
+const swap = (i, j, arr) => {
+  [arr[i], arr[j]] = [arr[j], arr[i]];
   return arr;
 };
 
