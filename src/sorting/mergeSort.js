@@ -1,38 +1,45 @@
-const mergeSort = (arr) => {
+const animateMergeSort = (arr) => {
   if (arr.length <= 1) return arr;
-  let mid = Math.floor(arr.length / 2);
-  let first = arr.slice(0, mid);
-  let second = arr.slice(mid);
+  let arrayCopy = Array.from(arr);
+  let animations = [];
+  mergeSort(arr, 0, arr.length - 1, arrayCopy, animations);
 
-  mergeSort(first);
-  mergeSort(second);
-  return merge(first, second);
+  return animations;
 };
-const merge = (arr1, arr2) => {
-  let result = [];
-  let i = 0,
-    j = 0;
 
-  while (i < arr1.length && j < arr2.length) {
-    if (arr1[i] < arr2[j]) {
-      result.push(arr1[i]);
-      i++;
+const mergeSort = (arr, startIdx, endIdx, arrayCopy, animations) => {
+  if (startIdx === endIdx) return;
+  let midIdx = Math.floor((startIdx + endIdx) / 2);
+
+  mergeSort(arrayCopy, startIdx, midIdx, arr, animations);
+  mergeSort(arrayCopy, midIdx + 1, endIdx, arr, animations);
+
+  merge(arr, startIdx, midIdx, endIdx, arrayCopy, animations);
+};
+const merge = (arr, startIdx, midIdx, endIdx, arrayCopy, animations) => {
+  let k = startIdx;
+  let i = startIdx;
+  let j = midIdx + 1;
+
+  while (i <= midIdx && j <= endIdx) {
+    if (arrayCopy[i] <= arrayCopy[j]) {
+      animations.push([i, j, k, arrayCopy[i]]);
+      arr[k++] = arrayCopy[i++];
     } else {
-      result.push(arr2[j]);
-      j++;
+      animations.push([i, j, k, arrayCopy[j]]);
+      arr[k++] = arrayCopy[j++];
     }
   }
 
-  while (i < arr1.length) {
-    result.push(arr1[i]);
-    i++;
-  }
-  while (j < arr2.length) {
-    result.push(arr2[j]);
-    j++;
+  while (i <= midIdx) {
+    animations.push([i, i, k, arrayCopy[i]]);
+    arr[k++] = arrayCopy[i++];
   }
 
-  return result;
+  while (j <= endIdx) {
+    animations.push([j, j, k, arrayCopy[j]]);
+    arr[k++] = arrayCopy[j++];
+  }
 };
 
-export default mergeSort;
+export default animateMergeSort;

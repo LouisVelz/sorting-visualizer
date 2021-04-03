@@ -2,20 +2,9 @@ import React, { useState, useEffect } from "react";
 import Styled from "styled-components";
 import { fisherYates } from "./../util/fisherYates";
 import bubbleSort from "./../sorting/bubbleSort";
+import mergeSort from "./../sorting/mergeSort";
+import { Container, Button } from "./../styles/styledComponents";
 import colors from "./colors";
-
-const Container = Styled.div`
-display: flex;
-border: 1px solid black;
-justify-content: center;
-align-items: flex-start;
-height: auto;
-`;
-
-const Button = Styled.button`
-width: 100px;
-height: 50px;
-`;
 
 const Visualizer = () => {
   const Element = Styled.div`
@@ -25,7 +14,7 @@ const Visualizer = () => {
     margin: 1px;
     display: inline-block;
     background-color: ${colors.primary};
-`;
+  `;
 
   useEffect(() => {
     const arr = fisherYates(25);
@@ -58,6 +47,26 @@ const Visualizer = () => {
     }
   };
 
+  const executeMergeSort = () => {
+    let animations = mergeSort(data);
+    let columns = document.querySelectorAll(".column");
+
+    for (let i = 0; i < animations.length; i++) {
+      let [first, second, index, height] = animations[i];
+
+      setTimeout(() => {
+        columns[first].style.backgroundColor = colors.secondary;
+        columns[second].style.backgroundColor = colors.switch;
+      }, animationRate * i);
+
+      setTimeout(() => {
+        columns[first].style.backgroundColor = colors.primary;
+        columns[second].style.backgroundColor = colors.primary;
+        columns[index].style.height = `${height * 5}px`;
+      }, animationRate * i + colorResetTime);
+    }
+  };
+
   const shuffleArray = () => {
     let arr = fisherYates(25);
     setData(arr);
@@ -85,8 +94,9 @@ const Visualizer = () => {
             })
           : null}
       </Container>
-      <Button onClick={() => execBubbleSort()}>Bubble Sort</Button>
       <Button onClick={() => shuffleArray()}>Shuffle</Button>
+      <Button onClick={() => execBubbleSort()}>Bubble Sort</Button>
+      <Button onClick={() => executeMergeSort()}>Merge Sort</Button>
     </>
   );
 };
