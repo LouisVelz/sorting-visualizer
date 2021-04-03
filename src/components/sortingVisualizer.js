@@ -3,7 +3,8 @@ import Styled from "styled-components";
 import { fisherYates } from "./../util/fisherYates";
 import { Container, Button } from "./../styles/styledComponents";
 import executeMergeSort from "./../execute/executeMergeSort";
-import execBubbleSort from "./../execute/executeBubbleSort";
+import executeBubbleSort from "./../execute/executeBubbleSort";
+import executeQuickSort from "./../execute/executeQuickSort";
 import colors from "../styles/colors";
 
 const Visualizer = () => {
@@ -46,8 +47,9 @@ const Visualizer = () => {
           : null}
       </Container>
       <Button onClick={() => shuffleArray()}>Shuffle</Button>
-      <Button onClick={() => execBubbleSort(data)}>Bubble Sort</Button>
+      <Button onClick={() => executeBubbleSort(data)}>Bubble Sort</Button>
       <Button onClick={() => executeMergeSort(data)}>Merge Sort</Button>
+      <Button onClick={() => executeQuickSort(data)}>Quick Sort</Button>
     </>
   );
 };
