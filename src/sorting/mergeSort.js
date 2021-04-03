@@ -29,16 +29,19 @@ const merge = (arr, startIdx, midIdx, endIdx, arrayCopy, animations) => {
       animations.push([i, j, k, arrayCopy[j]]);
       arr[k++] = arrayCopy[j++];
     }
+    console.log(arr, arrayCopy);
   }
 
   while (i <= midIdx) {
     animations.push([i, i, k, arrayCopy[i]]);
     arr[k++] = arrayCopy[i++];
+    console.log(arr, arrayCopy);
   }
 
   while (j <= endIdx) {
     animations.push([j, j, k, arrayCopy[j]]);
     arr[k++] = arrayCopy[j++];
+    console.log(arr, arrayCopy);
   }
 };
 
