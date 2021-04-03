@@ -8,12 +8,13 @@ const bubbleSort = (data, animation = []) => {
     sorted = true;
     for (let i = 1; i < arr.length; i++) {
       if (arr[i - 1] > arr[i]) {
+        animation.push([i - 1, i, arr[i - 1], arr[i]]);
         swap(i - 1, i);
         sorted = false;
-        animation.push([i - 1, i]);
       }
     }
   }
+  console.log(arr);
   return animation;
 };
 
