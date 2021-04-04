@@ -6,6 +6,7 @@ import executeMergeSort from "./../execute/executeMergeSort";
 import executeBubbleSort from "./../execute/executeBubbleSort";
 import executeQuickSort from "./../execute/executeQuickSort";
 import executeInsertionSort from "./../execute/executeInsertionSort";
+import executeHeapSort from "./../execute/executeHeapSort";
 import colors from "../styles/colors";
 
 const Visualizer = () => {
@@ -52,6 +53,7 @@ const Visualizer = () => {
       <Button onClick={() => executeMergeSort(data)}>Merge Sort</Button>
       <Button onClick={() => executeQuickSort(data)}>Quick Sort</Button>
       <Button onClick={() => executeInsertionSort(data)}>Insertion Sort</Button>
+      <Button onClick={() => executeHeapSort(data)}>Heap Sort</Button>
     </>
   );
 };
