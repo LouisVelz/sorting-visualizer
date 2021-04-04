@@ -1,32 +1,39 @@
 const animateQuickSort = (arr) => {
   let animations = [];
   quickSort(arr, 0, arr.length - 1, animations);
+  console.log(arr);
   return animations;
 };
 
-const quickSort = (arr, left, right, animations) => {
-  if (left < right) {
-    let pivotIndex = pivot(arr, left, right);
-    quickSort(arr, left, pivotIndex - 1);
-    quickSort(arr, pivotIndex + 1, right);
+const quickSort = (arr, start, end, animations) => {
+  if (start < end) {
+    let pivotIndex = pivot(arr, start, end, animations);
+
+    quickSort(arr, start, pivotIndex - 1, animations);
+
+    quickSort(arr, pivotIndex + 1, end, animations);
   }
-  return arr;
 };
 
 const pivot = (arr, start, end, animations) => {
   const swap = (i, j) => {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   };
+
   const pivot = arr[start];
   let swapIdx = start;
 
   for (let i = start + 1; i <= end; i++) {
     if (pivot > arr[i]) {
       swapIdx++;
+      animations.push([i, swapIdx, arr[i], arr[swapIdx]]);
       swap(swapIdx, i);
     }
   }
+
   swap(start, swapIdx);
+  animations.push([start, swapIdx, arr[start], arr[swapIdx]]);
+
   return swapIdx;
 };
 
