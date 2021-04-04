@@ -5,6 +5,7 @@ import { Container, Button } from "./../styles/styledComponents";
 import executeMergeSort from "./../execute/executeMergeSort";
 import executeBubbleSort from "./../execute/executeBubbleSort";
 import executeQuickSort from "./../execute/executeQuickSort";
+import executeInsertionSort from "./../execute/executeInsertionSort";
 import colors from "../styles/colors";
 
 const Visualizer = () => {
@@ -50,6 +51,7 @@ const Visualizer = () => {
       <Button onClick={() => executeBubbleSort(data)}>Bubble Sort</Button>
       <Button onClick={() => executeMergeSort(data)}>Merge Sort</Button>
       <Button onClick={() => executeQuickSort(data)}>Quick Sort</Button>
+      <Button onClick={() => executeInsertionSort(data)}>Insertion Sort</Button>
     </>
   );
 };

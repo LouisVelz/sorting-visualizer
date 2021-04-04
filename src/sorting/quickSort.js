@@ -1,7 +1,6 @@
 const animateQuickSort = (arr) => {
   let animations = [];
   quickSort(arr, 0, arr.length - 1, animations);
-  console.log(arr);
   return animations;
 };
 
