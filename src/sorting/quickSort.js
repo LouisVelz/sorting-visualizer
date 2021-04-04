@@ -31,8 +31,8 @@ const pivot = (arr, start, end, animations) => {
     }
   }
 
-  swap(start, swapIdx);
   animations.push([start, swapIdx, arr[start], arr[swapIdx]]);
+  swap(start, swapIdx);
 
   return swapIdx;
 };
