@@ -85,8 +85,8 @@ class MinHeap {
       }
 
       if (swap === null) break;
-      // this.animations.push([idx, this.values[swap]]);
-      // this.animations.push([swap, element]);
+      this.animations.push([this.count + idx, this.values[swap]]);
+      this.animations.push([this.count + swap, element]);
       this.values[idx] = this.values[swap];
       this.values[swap] = element;
       idx = swap;
