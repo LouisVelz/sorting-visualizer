@@ -26,8 +26,8 @@ const Visualizer = () => {
   }, []);
 
   const [data, setData] = useState();
-  const [animationRate, setAnimationRate] = useState(30);
-  const colorResetTime = 20;
+  // const [animationRate, setAnimationRate] = useState(30);
+  // const colorResetTime = 20;
 
   const shuffleArray = () => {
     let arr = fisherYates(25);

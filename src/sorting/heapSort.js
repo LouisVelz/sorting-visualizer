@@ -1,9 +1,7 @@
 const animateHeapSort = (arr) => {
   let animations = [];
   heapSort(arr, animations);
-  debugger;
   console.log(animations);
-  debugger;
   return animations;
 };
 
@@ -27,6 +25,7 @@ class MinHeap {
 
   insert(value) {
     this.values.push(value);
+    this.animations.push([this.values.length - 1, value]);
     this.bubbleUp();
   }
 
