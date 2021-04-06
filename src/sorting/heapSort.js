@@ -49,12 +49,12 @@ class MinHeap {
   remove() {
     let min = this.values[0];
     let end = this.values.pop();
+    this.count++;
     if (this.values.length > 0) {
       this.values[0] = end;
       this.sinkDown();
     }
-    this.animations.push([this.count, min]);
-    this.count++;
+    this.animations.push([this.count - 1, min]);
     return min;
   }
 

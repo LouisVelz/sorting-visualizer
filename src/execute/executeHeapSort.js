@@ -3,8 +3,8 @@ import colors from "./../styles/colors";
 
 const executeHeapSort = (arr) => {
   let animations = heapSort(arr);
-  const animationRate = 30;
-  const colorResetTime = 20;
+  const animationRate = 200;
+  const colorResetTime = 100;
   let columns = document.querySelectorAll(".column");
   debugger;
   for (let i = 0; i < animations.length; i++) {
