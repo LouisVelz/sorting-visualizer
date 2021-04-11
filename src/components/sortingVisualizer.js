@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import Styled from "styled-components";
 import { fisherYates } from "./../util/fisherYates";
+import createArray from "./../util/createArray";
 import { Container, Button } from "./../styles/styledComponents";
 import executeMergeSort from "./../execute/executeMergeSort";
 import executeBubbleSort from "./../execute/executeBubbleSort";
@@ -24,8 +25,8 @@ const Visualizer = () => {
   const { width, columns, heigth } = useContext(AppContext);
   debugger;
   useEffect(() => {
-    const arr = fisherYates(columns);
-    setData(arr);
+    // const arr = createArray(columns);
+    setData(fisherYates(columns));
   }, [columns]);
 
   const [data, setData] = useState();
@@ -41,7 +42,7 @@ const Visualizer = () => {
   // };
   return (
     <>
-      <Container>
+      <Container height={600}>
         {data
           ? data.map((element, index) => {
               return (

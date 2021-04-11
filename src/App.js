@@ -12,7 +12,16 @@ function App() {
   return (
     <>
       <AppContext.Provider
-        value={{ columns, setColumns, width, setWidth, heigth, setHeigth }}
+        value={{
+          columns,
+          setColumns,
+          width,
+          setWidth,
+          heigth,
+          setHeigth,
+          time,
+          setTime,
+        }}
       >
         <Visualizer />
         <Slider />
