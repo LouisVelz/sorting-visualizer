@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Styled from "styled-components";
 import { fisherYates } from "./../util/fisherYates";
 import { Container, Button } from "./../styles/styledComponents";
@@ -9,6 +9,7 @@ import executeInsertionSort from "./../execute/executeInsertionSort";
 import executeHeapSort from "./../execute/executeHeapSort";
 import executeSelectionSort from "./../execute/executeSelectionSort";
 import colors from "../styles/colors";
+import { AppContext } from "./../context/inputContext";
 
 const Visualizer = () => {
   const Element = Styled.div`
@@ -27,7 +28,7 @@ const Visualizer = () => {
 
   const [data, setData] = useState();
   // const [animationRate, setAnimationRate] = useState(30);
-  // const colorResetTime = 20;
+  const { value, setValue } = useContext(AppContext);
 
   const shuffleArray = () => {
     let arr = fisherYates(25);
@@ -56,6 +57,7 @@ const Visualizer = () => {
       <Button onClick={() => executeInsertionSort(data)}>Insertion Sort</Button>
       <Button onClick={() => executeHeapSort(data)}>Heap Sort</Button>
       <Button onClick={() => executeSelectionSort(data)}>Selection Sort</Button>
+      <div>{value}</div>
     </>
   );
 };

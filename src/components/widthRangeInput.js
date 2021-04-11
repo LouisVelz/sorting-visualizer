@@ -1,5 +1,5 @@
 import Styled from "styled-components";
-import React, { useState, createContext } from "react";
+import React, { useState } from "react";
 import { Container } from "./../styles/styledComponents";
 
 const Slider = Styled.input`
