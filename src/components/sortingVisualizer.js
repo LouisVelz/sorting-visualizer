@@ -13,28 +13,32 @@ import { AppContext } from "./../context/inputContext";
 
 const Visualizer = () => {
   const Element = Styled.div`
-    width: 10px;
-    height: ${(props) => props.height * 5}px;
+    width: ${(props) => props.width}px;;
+    height: ${(props) => props.height}px;
     border: 1px solid gray;
     margin: 1px;
     display: inline-block;
     background-color: ${colors.primary};
   `;
 
+  const { width, columns, heigth } = useContext(AppContext);
+  debugger;
   useEffect(() => {
-    const arr = fisherYates(25);
+    const arr = fisherYates(columns);
     setData(arr);
-  }, []);
+  }, [columns]);
 
   const [data, setData] = useState();
   // const [animationRate, setAnimationRate] = useState(30);
-  const { value, setValue } = useContext(AppContext);
 
   const shuffleArray = () => {
-    let arr = fisherYates(25);
+    let arr = fisherYates(columns);
     setData(arr);
   };
 
+  // const changeValue = () => {
+  //   setValue(1000);
+  // };
   return (
     <>
       <Container>
@@ -42,9 +46,10 @@ const Visualizer = () => {
           ? data.map((element, index) => {
               return (
                 <Element
-                  height={element}
+                  height={element * heigth}
                   key={index}
                   className="column"
+                  width={width}
                 ></Element>
               );
             })
@@ -57,7 +62,7 @@ const Visualizer = () => {
       <Button onClick={() => executeInsertionSort(data)}>Insertion Sort</Button>
       <Button onClick={() => executeHeapSort(data)}>Heap Sort</Button>
       <Button onClick={() => executeSelectionSort(data)}>Selection Sort</Button>
-      <div>{value}</div>
+      {/* <Button onClick={() => changeValue()}>ChangeValue</Button> */}
     </>
   );
 };

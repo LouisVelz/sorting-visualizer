@@ -1,30 +1,42 @@
 import Styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Container } from "./../styles/styledComponents";
-
-const Slider = Styled.input`
-
-`;
-const Display = Styled.div``;
+import { AppContext } from "./../context/inputContext";
+import { Slider, Display } from "./../styles/styledComponents";
 
 const SliderInput = () => {
-  const [value, setValue] = useState(50);
-  const displayValue = () => {
-    let value = document.getElementById("barWidth").value;
-    setValue(value);
+  const { width, setWidth, heigth, setHeigth } = useContext(AppContext);
+
+  const changeWidth = () => {
+    let value = document.getElementById("setWidth").value;
+    setWidth(value);
+  };
+
+  const changeHeigth = () => {
+    let value = document.getElementById("setHeigth").value;
+    setHeigth(value);
   };
 
   return (
     <Container>
       <Slider
-        id="barWidth"
+        id="setWidth"
         type="range"
-        value={value}
-        min={0}
-        max={100}
-        onChange={() => displayValue()}
+        value={width}
+        min={10}
+        max={25}
+        onChange={() => changeWidth()}
       ></Slider>
-      <Display>{value}</Display>
+      <Display>{width}</Display>
+      <Slider
+        id="setHeigth"
+        type="range"
+        value={heigth}
+        min={5}
+        max={10}
+        onChange={() => changeHeigth()}
+      ></Slider>
+      <Display>{heigth}</Display>
     </Container>
   );
 };

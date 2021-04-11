@@ -4,15 +4,19 @@ import Slider from "./components/widthRangeInput";
 import { AppContext } from "./context/inputContext";
 
 function App() {
-  const [value, setValue] = useState(50);
-  const providerValue = (() => ({ value, setValue }), [value, setValue]);
+  const [width, setWidth] = useState(10);
+  const [heigth, setHeigth] = useState(5);
+  const [time, setTime] = useState();
+  const [columns, setColumns] = useState(25);
 
   return (
     <>
-      <AppContext.Provider value={providerValue}>
+      <AppContext.Provider
+        value={{ columns, setColumns, width, setWidth, heigth, setHeigth }}
+      >
         <Visualizer />
+        <Slider />
       </AppContext.Provider>
-      <Slider />
     </>
   );
 }
