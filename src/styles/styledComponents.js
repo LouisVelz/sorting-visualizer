@@ -1,4 +1,5 @@
 import Styled from "styled-components";
+import colors from "./colors";
 
 export const Container = Styled.div`
   display: flex;
@@ -18,3 +19,12 @@ export const Slider = Styled.input`
 `;
 
 export const Display = Styled.div``;
+
+export const Element = Styled.div`
+  width: ${(props) => props.width}px;;
+  height: ${(props) => props.height}px;
+  border: 1px solid gray;
+  margin: 1px;
+  display: inline-block;
+  background-color: ${colors.primary};
+`;
