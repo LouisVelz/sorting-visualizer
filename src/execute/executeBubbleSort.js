@@ -1,9 +1,9 @@
 import bubbleSort from "./../sorting/bubbleSort";
 import colors from "./../styles/colors";
 
-const execBubbleSort = (data, animationRate) => {
+const execBubbleSort = (data, animationRate, colorResetTime) => {
   // const animationRate = 30;
-  const colorResetTime = 20;
+  // const colorResetTime = 20;
   let animations = bubbleSort(data);
   let columns = document.querySelectorAll(".column");
 

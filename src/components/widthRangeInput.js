@@ -1,13 +1,18 @@
-import Styled from "styled-components";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Container } from "./../styles/styledComponents";
 import { AppContext } from "./../context/inputContext";
 import { Slider, Display } from "./../styles/styledComponents";
 
 const SliderInput = () => {
-  const { width, setWidth, time, setTime, columns, setColumns } = useContext(
-    AppContext
-  );
+  const {
+    width,
+    setWidth,
+    time,
+    setTime,
+    columns,
+    setColumns,
+    setResetTime,
+  } = useContext(AppContext);
 
   const changeWidth = () => {
     let value = document.getElementById("setWidth").value;
@@ -16,6 +21,7 @@ const SliderInput = () => {
 
   const changeTime = () => {
     let value = document.getElementById("timer").value;
+    setResetTime(value / 2);
     setTime(value);
   };
 
@@ -30,8 +36,8 @@ const SliderInput = () => {
         id="setWidth"
         type="range"
         value={width}
-        min={10}
-        max={25}
+        min={3}
+        max={20}
         onChange={() => changeWidth()}
       ></input>
       <Display>{width}</Display>
@@ -39,8 +45,8 @@ const SliderInput = () => {
         id="timer"
         type="range"
         value={time}
-        min={5}
-        max={50}
+        min={2}
+        max={100}
         onChange={() => changeTime()}
       ></Slider>
       <Display>{time}</Display>
@@ -49,7 +55,7 @@ const SliderInput = () => {
         type="range"
         value={columns}
         min={5}
-        max={50}
+        max={100}
         onChange={() => changeColumns()}
       ></Slider>
       <Display>{columns}</Display>

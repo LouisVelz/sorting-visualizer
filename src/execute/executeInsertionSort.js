@@ -1,10 +1,10 @@
 import quickSort from "./../sorting/insertionSort";
 import colors from "./../styles/colors";
 
-const executeInsertionSort = (arr, animationRate) => {
+const executeInsertionSort = (arr, animationRate, colorResetTime) => {
   let animations = quickSort(arr);
   // const animationRate = 50;
-  const colorResetTime = 20;
+  // const colorResetTime = 20;
   let columns = document.querySelectorAll(".column");
 
   for (let i = 0; i < animations.length; i++) {

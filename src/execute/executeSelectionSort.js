@@ -1,10 +1,10 @@
 import selectionSort from "./../sorting/selectionSort";
 import colors from "./../styles/colors";
 
-const executeSelectionSort = (arr, animationRate) => {
+const executeSelectionSort = (arr, animationRate, colorResetTime) => {
   let animations = selectionSort(arr);
   // const animationRate = 30;
-  const colorResetTime = 20;
+  // const colorResetTime = 20;
   let columns = document.querySelectorAll(".column");
 
   for (let i = 0; i < animations.length; i++) {

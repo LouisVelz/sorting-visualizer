@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import Styled from "styled-components";
 import { fisherYates } from "./../util/fisherYates";
-import createArray from "./../util/createArray";
-import { Container, Button, Element } from "./../styles/styledComponents";
+import { Container, Button } from "./../styles/styledComponents";
 import executeMergeSort from "./../execute/executeMergeSort";
 import executeBubbleSort from "./../execute/executeBubbleSort";
 import executeQuickSort from "./../execute/executeQuickSort";
@@ -14,43 +12,27 @@ import colors from "./../styles/colors";
 import { AppContext } from "./../context/inputContext";
 
 const Visualizer = () => {
-  const { width, columns, time } = useContext(AppContext);
+  const { width, columns, time, resetTime } = useContext(AppContext);
   const [data, setData] = useState();
 
   useEffect(() => {
-    // const arr = createArray(columns);
-    // const arr = createArray(columns);
-    // let arr = fisherYates(columns);
-    setData(fisherYates(columns));
-    // setData(arr);
+    let arr = fisherYates(columns);
+    setData(arr);
   }, [columns]);
 
   // const [animationRate, setAnimationRate] = useState(30);
 
   const shuffleArray = () => {
-    // let arr = fisherYates(columns);
-    // let arr = fisherYates(columns);
-
-    setData(fisherYates(columns));
-    // setData(Array.from(arr));
-    debugger;
+    let arr = fisherYates(columns);
+    setData(arr);
   };
 
-  // const changeValue = () => {
-  //   setValue(1000);
-  // };
   return (
     <>
-      <Container height={305}>
+      <Container height={300}>
         {data
           ? data.map((element, index) => {
               return (
-                // <Element
-                //   height={element * 5}
-                //   key={index}
-                //   className="column"
-                //   width={width}
-                // ></Element>
                 <div
                   key={index}
                   className="column"
@@ -69,20 +51,25 @@ const Visualizer = () => {
       </Container>
       <Container>
         <Button onClick={() => shuffleArray()}>Shuffle</Button>
-        <Button onClick={() => executeBubbleSort(data, time)}>
+        <Button onClick={() => executeBubbleSort(data, time, resetTime)}>
           Bubble Sort
         </Button>
-        <Button onClick={() => executeMergeSort(data, time)}>Merge Sort</Button>
-        <Button onClick={() => executeQuickSort(data, time)}>Quick Sort</Button>
-        <Button onClick={() => executeInsertionSort(data, time)}>
+        <Button onClick={() => executeMergeSort(data, time, resetTime)}>
+          Merge Sort
+        </Button>
+        <Button onClick={() => executeQuickSort(data, time, resetTime)}>
+          Quick Sort
+        </Button>
+        <Button onClick={() => executeInsertionSort(data, time, resetTime)}>
           Insertion Sort
         </Button>
-        <Button onClick={() => executeHeapSort(data, time)}>Heap Sort</Button>
-        <Button onClick={() => executeSelectionSort(data, time)}>
+        <Button onClick={() => executeHeapSort(data, time, resetTime)}>
+          Heap Sort
+        </Button>
+        <Button onClick={() => executeSelectionSort(data, time, resetTime)}>
           Selection Sort
         </Button>
       </Container>
-      {/* <Button onClick={() => changeValue()}>ChangeValue</Button> */}
     </>
   );
 };

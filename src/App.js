@@ -7,6 +7,7 @@ function App() {
   const [width, setWidth] = useState(10);
   const [time, setTime] = useState(30);
   const [columns, setColumns] = useState(25);
+  const [resetTime, setResetTime] = useState(25);
 
   return (
     <>
@@ -18,6 +19,8 @@ function App() {
           setWidth,
           time,
           setTime,
+          resetTime,
+          setResetTime,
         }}
       >
         <Visualizer />

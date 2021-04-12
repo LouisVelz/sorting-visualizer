@@ -1,9 +1,9 @@
 import quickSort from "./../sorting/quickSort";
 import colors from "./../styles/colors";
 
-const executeQuickSort = (data, animationRate) => {
+const executeQuickSort = (data, animationRate, colorResetTime) => {
   // const animationRate = 30;
-  const colorResetTime = 20;
+  // const colorResetTime = 20;
 
   let animations = quickSort(data);
 
