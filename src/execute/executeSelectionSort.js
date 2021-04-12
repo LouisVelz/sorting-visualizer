@@ -1,9 +1,9 @@
 import selectionSort from "./../sorting/selectionSort";
 import colors from "./../styles/colors";
 
-const executeSelectionSort = (arr) => {
+const executeSelectionSort = (arr, animationRate) => {
   let animations = selectionSort(arr);
-  const animationRate = 30;
+  // const animationRate = 30;
   const colorResetTime = 20;
   let columns = document.querySelectorAll(".column");
 

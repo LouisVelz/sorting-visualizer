@@ -1,9 +1,9 @@
 import quickSort from "./../sorting/insertionSort";
 import colors from "./../styles/colors";
 
-const executeInsertionSort = (arr) => {
+const executeInsertionSort = (arr, animationRate) => {
   let animations = quickSort(arr);
-  const animationRate = 50;
+  // const animationRate = 50;
   const colorResetTime = 20;
   let columns = document.querySelectorAll(".column");
 

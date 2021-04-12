@@ -1,8 +1,8 @@
 import mergeSort from "./../sorting/mergeSort";
 import colors from "./../styles/colors";
 
-const executeMergeSort = (data) => {
-  const animationRate = 30;
+const executeMergeSort = (data, animationRate) => {
+  // const animationRate = 30;
   const colorResetTime = 20;
   let animations = mergeSort(data);
   let columns = document.querySelectorAll(".column");

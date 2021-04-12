@@ -1,9 +1,9 @@
 import heapSort from "./../sorting/heapSort";
 import colors from "./../styles/colors";
 
-const executeHeapSort = (arr) => {
+const executeHeapSort = (arr, animationRate) => {
   let animations = heapSort(arr);
-  const animationRate = 200;
+  // const animationRate = 200;
   const colorResetTime = 100;
   let columns = document.querySelectorAll(".column");
   debugger;

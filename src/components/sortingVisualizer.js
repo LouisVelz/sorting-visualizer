@@ -22,9 +22,8 @@ const Visualizer = () => {
     background-color: ${colors.primary};
   `;
 
-  const { width, columns, heigth, time } = useContext(AppContext);
+  const { width, columns, time } = useContext(AppContext);
   const [data, setData] = useState();
-  debugger;
   useEffect(() => {
     // const arr = createArray(columns);
     // const arr = createArray(columns);
@@ -45,12 +44,12 @@ const Visualizer = () => {
   // };
   return (
     <>
-      <Container height={300}>
+      <Container height={275}>
         {data
           ? data.map((element, index) => {
               return (
                 <Element
-                  height={element * heigth}
+                  height={element * 5}
                   key={index}
                   className="column"
                   width={width}
@@ -61,11 +60,15 @@ const Visualizer = () => {
       </Container>
       <Button onClick={() => shuffleArray()}>Shuffle</Button>
       <Button onClick={() => executeBubbleSort(data, time)}>Bubble Sort</Button>
-      <Button onClick={() => executeMergeSort(data)}>Merge Sort</Button>
-      <Button onClick={() => executeQuickSort(data)}>Quick Sort</Button>
-      <Button onClick={() => executeInsertionSort(data)}>Insertion Sort</Button>
-      <Button onClick={() => executeHeapSort(data)}>Heap Sort</Button>
-      <Button onClick={() => executeSelectionSort(data)}>Selection Sort</Button>
+      <Button onClick={() => executeMergeSort(data, time)}>Merge Sort</Button>
+      <Button onClick={() => executeQuickSort(data, time)}>Quick Sort</Button>
+      <Button onClick={() => executeInsertionSort(data, time)}>
+        Insertion Sort
+      </Button>
+      <Button onClick={() => executeHeapSort(data, time)}>Heap Sort</Button>
+      <Button onClick={() => executeSelectionSort(data, time)}>
+        Selection Sort
+      </Button>
       {/* <Button onClick={() => changeValue()}>ChangeValue</Button> */}
     </>
   );
