@@ -22,14 +22,17 @@ const Visualizer = () => {
     background-color: ${colors.primary};
   `;
 
-  const { width, columns, heigth } = useContext(AppContext);
+  const { width, columns, heigth, time } = useContext(AppContext);
+  const [data, setData] = useState();
   debugger;
   useEffect(() => {
     // const arr = createArray(columns);
-    setData(fisherYates(columns));
+    // const arr = createArray(columns);
+    const arr = fisherYates(columns);
+    // setData(fisherYates(columns));
+    setData(arr);
   }, [columns]);
 
-  const [data, setData] = useState();
   // const [animationRate, setAnimationRate] = useState(30);
 
   const shuffleArray = () => {
@@ -42,7 +45,7 @@ const Visualizer = () => {
   // };
   return (
     <>
-      <Container height={600}>
+      <Container height={300}>
         {data
           ? data.map((element, index) => {
               return (
@@ -57,7 +60,7 @@ const Visualizer = () => {
           : null}
       </Container>
       <Button onClick={() => shuffleArray()}>Shuffle</Button>
-      <Button onClick={() => executeBubbleSort(data)}>Bubble Sort</Button>
+      <Button onClick={() => executeBubbleSort(data, time)}>Bubble Sort</Button>
       <Button onClick={() => executeMergeSort(data)}>Merge Sort</Button>
       <Button onClick={() => executeQuickSort(data)}>Quick Sort</Button>
       <Button onClick={() => executeInsertionSort(data)}>Insertion Sort</Button>

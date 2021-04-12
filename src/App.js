@@ -5,8 +5,7 @@ import { AppContext } from "./context/inputContext";
 
 function App() {
   const [width, setWidth] = useState(10);
-  const [heigth, setHeigth] = useState(5);
-  const [time, setTime] = useState();
+  const [time, setTime] = useState(30);
   const [columns, setColumns] = useState(25);
 
   return (
@@ -17,8 +16,6 @@ function App() {
           setColumns,
           width,
           setWidth,
-          heigth,
-          setHeigth,
           time,
           setTime,
         }}
