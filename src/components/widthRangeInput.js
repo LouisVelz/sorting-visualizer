@@ -32,15 +32,17 @@ const SliderInput = () => {
 
   return (
     <Container heigth={100}>
-      <input
+      <Display>Width</Display>
+      <Slider
         id="setWidth"
         type="range"
         value={width}
         min={3}
         max={20}
         onChange={() => changeWidth()}
-      ></input>
+      ></Slider>
       <Display>{width}</Display>
+      <Display>Speed</Display>
       <Slider
         id="timer"
         type="range"
@@ -50,6 +52,7 @@ const SliderInput = () => {
         onChange={() => changeTime()}
       ></Slider>
       <Display>{time}</Display>
+      <Display>Columns</Display>
       <Slider
         id="columns"
         type="range"

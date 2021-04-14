@@ -13,6 +13,7 @@ function App() {
   return (
     <>
       <NavBar />
+      <div style={{ marginTop: "100px" }} />
       <AppContext.Provider
         value={{
           columns,

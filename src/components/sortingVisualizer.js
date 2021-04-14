@@ -29,7 +29,7 @@ const Visualizer = () => {
 
   return (
     <>
-      <Container height={300}>
+      <Container height={"auto"}>
         {data
           ? data.map((element, index) => {
               return (
