@@ -2,7 +2,8 @@ import React, { useState, useMemo } from "react";
 import Visualizer from "./components/sortingVisualizer";
 import Slider from "./components/widthRangeInput";
 import { AppContext } from "./context/inputContext";
-
+import navBar from "./components/navBar";
+import NavBar from "./components/navBar";
 function App() {
   const [width, setWidth] = useState(10);
   const [time, setTime] = useState(30);
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <>
+      <NavBar />
       <AppContext.Provider
         value={{
           columns,
